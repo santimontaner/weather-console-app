@@ -1,0 +1,9 @@
+name: weather-console-app
+channels:
+  - defaults
+
+dependencies:
+  - python=3.9
+  - requests=2.28
+  - pylint
+  - mypy
