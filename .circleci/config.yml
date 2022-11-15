@@ -15,8 +15,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          pip install -r requirements.txt
-          cd src
+          pip install -r requirements.txt          
           python setup.py install
           nose2
 
