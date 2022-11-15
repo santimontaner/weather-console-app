@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(name="weatherconsoleapp",
         packages = find_packages("."),
-        package_dir = {"" : "."},
+        package_dir = {"" : "src"},
         entry_points={
         'console_scripts': [
             'weatherconsoleapp=weatherconsoleapp.main:main'
