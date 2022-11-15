@@ -128,3 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 weather-console-app.code-workspace
+.vscode/launch.json
