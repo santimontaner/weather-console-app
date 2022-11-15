@@ -5,7 +5,7 @@ from logging import getLogger
 from datetime import datetime
 import requests
 from . import WeatherApiConnector
-from .weather_api_connector import WeatherConnectorTimeout
+from . import WeatherConnectorTimeout
 from ..domain import Location, WeatherInfo, Units, Temperature, Date
 
 logger = getLogger(__name__)

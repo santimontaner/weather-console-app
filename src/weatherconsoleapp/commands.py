@@ -9,9 +9,9 @@ from . import Utils
 logger = logging.getLogger(__name__)
 
 class CommandResultStatus(Enum):
-    Success = 0
-    Error = 1
-    Timeout = 2
+    SUCCESS = 0
+    ERROR = 1
+    TIMEOUT = 2
 
 class WeatherCommand(ABC):
 
@@ -31,21 +31,19 @@ class WeatherCommand(ABC):
         trimmed_unit = units.strip()
         if trimmed_unit == cls.METRIC:
             return ("", Units.METRIC)
-        elif trimmed_unit == cls.IMPERIAL:
+        if trimmed_unit == cls.IMPERIAL:
             return ("", Units.IMPERIAL)
-        else:
-            return ("Units must be 'metric' (default) or 'imperial'.", None)
+        return ("Units must be 'metric' (default) or 'imperial'.", None)
 
     @classmethod
-    def validate_location_argument(cls, location: str) -> Tuple[str, Union[Location, None]]:        
+    def validate_location_argument(cls, location: str) -> Tuple[str, Union[Location, None]]:
         substrings = Utils.parse_location_string(location)
 
-        if (len(substrings) != 2 
+        if (len(substrings) != 2
             or not substrings[1].isupper()
             or substrings[1] != substrings[1].strip()):
             return ("Location argument must have this format: Cityname,COUNTRYCODE.", None)
-        else:
-            return ("", Location(substrings[0], substrings[1]))
+        return ("", Location(substrings[0], substrings[1]))
 
 class PrintCurrentWeatherCommand(WeatherCommand):
     def __init__(self,
@@ -63,12 +61,12 @@ class PrintCurrentWeatherCommand(WeatherCommand):
                 self._units)
             Utils.print_location(current_weather_info.location)
             Utils.print_weather_forecast(current_weather_info)
-            return CommandResultStatus.Success
+            return CommandResultStatus.SUCCESS
         except WeatherConnectorTimeout:
             return CommandResultStatus.Timeout
         except Exception:
             logger.error("Exception raised while executing command", exc_info=True)
-            return CommandResultStatus.Error
+            return CommandResultStatus.ERROR
 
     @classmethod
     def validate_arguments(cls, location: str, units: str) -> Tuple[List[str], Dict[str, Any]]:
@@ -82,12 +80,12 @@ class PrintCurrentWeatherCommand(WeatherCommand):
             validated_input[cls.LOCATION]  = validated_location
         else:
             validations_error_messages.append(location_validation_message)
-        
+
         if not validated_units is None:
             validated_input[cls.UNITS] = validated_units
         else:
             validations_error_messages.append(units_validation_message)
-        
+
         return (validations_error_messages, validated_input)
 
 class PrintWeatherForecastCommand(WeatherCommand):
@@ -113,21 +111,20 @@ class PrintWeatherForecastCommand(WeatherCommand):
             Utils.print_location(self._location)
             for weather_info in weather_forecast_infos:
                 Utils.print_weather_forecast(weather_info)
-            return CommandResultStatus.Success
+            return CommandResultStatus.SUCCESS
         except WeatherConnectorTimeout:
             return CommandResultStatus.Timeout
         except Exception:
             logger.error("Exception raised while executing command", exc_info=True)
-            return CommandResultStatus.Error
-    
+            return CommandResultStatus.ERROR
+
     @classmethod
     def validate_days_argument(cls, days: str):
         is_integer, value = Utils.try_parse_string_to_int(days)
 
         if not is_integer or value < 1 or value > cls.MAX_NUMBER_OF_DAYS:
             return ("Input 'days' argument must be an integer in the range 1-5.", None)
-        else:
-            return (None, value)
+        return (None, value)
 
     @classmethod
     def validate_arguments(cls, location: str, units: str, days: str) -> Tuple[List[str], Dict[str, Any]]:
@@ -139,17 +136,17 @@ class PrintWeatherForecastCommand(WeatherCommand):
         days_validation_message, validated_days = cls.validate_days_argument(days)
 
         if validated_location is None:
-            validations_error_messages.append(location_validation_message)            
+            validations_error_messages.append(location_validation_message)
         else:
             validated_input[cls.LOCATION]  = validated_location
-           
+
         if validated_units is None:
             validations_error_messages.append(units_validation_message)
         else:
             validated_input[cls.UNITS] = validated_units
-           
+
         if validated_days is None:
-            validations_error_messages.append(days_validation_message)            
+            validations_error_messages.append(days_validation_message)
         else:
             validated_input[cls.DAYS] = validated_days
 

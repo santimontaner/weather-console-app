@@ -7,8 +7,8 @@ from weatherconsoleapp.commands import PrintCurrentWeatherCommand, PrintWeatherF
 
 def get_config_dir():
     app_directory = ".weatherconsoleapp"
-    user_directory = os.path.expanduser("~")    
-    return pathlib.Path(user_directory, app_directory)    
+    user_directory = os.path.expanduser("~")
+    return pathlib.Path(user_directory, app_directory)
 
 logging.basicConfig(
     filename=pathlib.Path(get_config_dir(), 'weatherconsoleapp.log'),
@@ -20,9 +20,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def print_command_result_status(command_result_status: CommandResultStatus):
-    if command_result_status == CommandResultStatus.Error:
+    if command_result_status == CommandResultStatus.ERROR:
         print("An unexpected error happened.")
-    elif command_result_status == CommandResultStatus.Timeout:
+    elif command_result_status == CommandResultStatus.TIMEOUT:
         print("Request timedout while requesting weather information.")
 
 def execute_command(command_builder, apikey, validation_error_messages, validated_input):
@@ -30,11 +30,11 @@ def execute_command(command_builder, apikey, validation_error_messages, validate
         for message in validation_error_messages:
             print(message)
         return
-    else:
-        connector = AccuWeatherApiConnector(apikey)
-        command = command_builder(connector, **validated_input)
-        result_status = command.execute()
-        print_command_result_status(result_status)
+
+    connector = AccuWeatherApiConnector(apikey)
+    command = command_builder(connector, **validated_input)
+    result_status = command.execute()
+    print_command_result_status(result_status)
 
 def try_execute_print_current_weather(apikey: str, location: str, units: str):
     validation_error_messages, validated_input = PrintCurrentWeatherCommand.validate_arguments(location, units)
@@ -42,13 +42,13 @@ def try_execute_print_current_weather(apikey: str, location: str, units: str):
 
 def try_execute_print_weather_forecast(apikey: str, location: str, units: str, days: str):
     validation_error_messages, validated_input = PrintWeatherForecastCommand.validate_arguments(location, units, days)
-    execute_command(PrintWeatherForecastCommand, apikey, validation_error_messages, validated_input)    
+    execute_command(PrintWeatherForecastCommand, apikey, validation_error_messages, validated_input)
 
 def get_api_key():
     try:
-        config_dir = get_config_dir()        
+        config_dir = get_config_dir()
         config_file_name = "config.ini"
-        config_file_path = pathlib.Path(config_dir, config_file_name)    
+        config_file_path = pathlib.Path(config_dir, config_file_name)
         config = configparser.ConfigParser()
         config.read(config_file_path)
         apikey = config['Accuweather']['apikey']
