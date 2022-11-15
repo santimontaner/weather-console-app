@@ -1,14 +1,23 @@
 import logging
 import argparse
+import os, pathlib
+import configparser
 from weatherconsoleapp.connectors import AccuWeatherApiConnector
 from weatherconsoleapp.commands import PrintCurrentWeatherCommand, PrintWeatherForecastCommand, CommandResultStatus
 
+def get_config_dir():
+    app_directory = ".weatherconsoleapp"
+    user_directory = os.path.expanduser("~")    
+    return pathlib.Path(user_directory, app_directory)    
+
 logging.basicConfig(
-    filename='weatherconsoleapp.log',
+    filename=pathlib.Path(get_config_dir(), 'weatherconsoleapp.log'),
     filemode='a',
-    format="%(asctime)s - %(message)s",
+    format="%(name)s: %(asctime)s - %(message)s",
     encoding='utf-8',
     level=logging.DEBUG)
+
+logger = logging.getLogger(__name__)
 
 def print_command_result_status(command_result_status: CommandResultStatus):
     if command_result_status == CommandResultStatus.Error:
@@ -35,6 +44,19 @@ def try_execute_print_weather_forecast(apikey: str, location: str, units: str, d
     validation_error_messages, validated_input = PrintWeatherForecastCommand.validate_arguments(location, units, days)
     execute_command(PrintWeatherForecastCommand, apikey, validation_error_messages, validated_input)    
 
+def get_api_key():
+    try:
+        config_dir = get_config_dir()        
+        config_file_name = "config.ini"
+        config_file_path = pathlib.Path(config_dir, config_file_name)    
+        config = configparser.ConfigParser()
+        config.read(config_file_path)
+        apikey = config['Accuweather']['apikey']
+        return apikey
+    except Exception:
+        logger.error("Could not find an apikey for Accuweather", exc_info=True)
+        return None
+
 CURRENT_WEATHER_COMMAND = "current"
 WEATHER_FORECAST_COMMAND = "forecast"
 
@@ -48,6 +70,10 @@ def main():
     parser.add_argument("--units", default="metric")
     parser.add_argument("--days", default="5")
     args = parser.parse_args()
+
+    apikey = get_api_key()
+    if apikey is None:
+        print("Please set a valid apikey in Accuweather.apikey field from ~/.weatherconsoleapp/config.ini file.")
 
     if args.command == CURRENT_WEATHER_COMMAND:
         try_execute_print_current_weather(apikey, args.location, args.units)
