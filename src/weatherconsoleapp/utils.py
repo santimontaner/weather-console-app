@@ -4,9 +4,17 @@ from .domain import WeatherInfo, Location
 class Utils:
     @staticmethod
     def print_weather_forecast(weather_forecast: WeatherInfo):
+        formatted_weather = weather_forecast.weather_description.lower().capitalize()
+        weather_description = Utils.ensure_string_ends_with_dot(formatted_weather)
         print(weather_forecast.date)
-        print(f"> Weather: {weather_forecast.weather_description.lower().capitalize()}")
+        print(f"> Weather: {weather_description}")
         print(f"> Temperature: {weather_forecast.temperature}")
+
+    @staticmethod
+    def ensure_string_ends_with_dot(string: str):
+        if(len(string) > 0 and string[-1] != '.'):
+            return f"{string}."
+        return string
 
     @staticmethod
     def print_location(location: Location):

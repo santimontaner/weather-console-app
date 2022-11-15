@@ -1,9 +1,12 @@
 from enum import Enum
 from abc import ABC, abstractmethod
-from typing import Tuple, List, Dict
+from typing import Tuple, List, Dict, Union, Optional, Any
+import logging
 from .connectors import WeatherApiConnector, WeatherConnectorTimeout
 from .domain import Location, Units
 from . import Utils
+
+logger = logging.getLogger(__name__)
 
 class CommandResultStatus(Enum):
     Success = 0
@@ -22,27 +25,19 @@ class WeatherCommand(ABC):
     def execute(self):
         """Execute the logic for the command.
         """
+    
     @classmethod
-    def validate_arguments(cls, **kwargs) -> Tuple[List[str], Dict]:
-        """Validate all the arguments for the command.
-        Returns a tuple with 2 items:
-        1. A list with the validation error messages (if any).
-        2. A dictionary with the correct arguments for the command if the
-            input arguments were valid.
-        """
-
-    @classmethod
-    def validate_units_argument(cls, units: str) -> Tuple[str, Units]:
+    def validate_units_argument(cls, units: str) -> Tuple[str, Union[Units, None]]:
         trimmed_unit = units.strip()
-        if trimmed_unit == cls.METRIC or trimmed_unit == "":
-            return (None, Units.METRIC)
+        if trimmed_unit == cls.METRIC:
+            return ("", Units.METRIC)
         elif trimmed_unit == cls.IMPERIAL:
-            return (None, Units.METRIC)
+            return ("", Units.IMPERIAL)
         else:
             return ("Units must be 'metric' (default) or 'imperial'.", None)
 
     @classmethod
-    def validate_location_argument(cls, location: str = None) -> Tuple[str, Location]:        
+    def validate_location_argument(cls, location: str) -> Tuple[str, Union[Location, None]]:        
         substrings = Utils.parse_location_string(location)
 
         if (len(substrings) != 2 
@@ -50,13 +45,13 @@ class WeatherCommand(ABC):
             or substrings[1] != substrings[1].strip()):
             return ("Location argument must have this format: Cityname,COUNTRYCODE.", None)
         else:
-            return (None, Location(substrings[0], substrings[1]))
+            return ("", Location(substrings[0], substrings[1]))
 
 class PrintCurrentWeatherCommand(WeatherCommand):
     def __init__(self,
         connector: WeatherApiConnector,
-        location: Location = None,
-        units: Units = None):
+        location: Optional[Location] = None,
+        units: Units = Units.METRIC):
         self._connector = connector
         self._location = location
         self._units = units
@@ -72,15 +67,16 @@ class PrintCurrentWeatherCommand(WeatherCommand):
         except WeatherConnectorTimeout:
             return CommandResultStatus.Timeout
         except Exception:
+            logger.error("Exception raised while executing command", exc_info=True)
             return CommandResultStatus.Error
 
     @classmethod
-    def validate_arguments(cls, location: str = None, units: str = "metric") -> Tuple[List[str], Dict]:
+    def validate_arguments(cls, location: str, units: str) -> Tuple[List[str], Dict[str, Any]]:
         validations_error_messages = []
         validated_input = {}
 
         location_validation_message, validated_location = cls.validate_location_argument(location)
-        units_validation_message, validated_units = cls.validate_units_argument(units)
+        units_validation_message, validated_units = super().validate_units_argument(units)
 
         if not validated_location is None:
             validated_input[cls.LOCATION]  = validated_location
@@ -100,9 +96,9 @@ class PrintWeatherForecastCommand(WeatherCommand):
 
     def __init__(self,
         connector: WeatherApiConnector,
-        location: Location = None,
-        units: Units = None,
-        days: int = 5):
+        location: Optional[Location] = None,
+        units: Optional[Units] = Units.METRIC,
+        days: Optional[int] = 5):
         self._connector = connector
         self._location = location
         self._units = units
@@ -121,6 +117,7 @@ class PrintWeatherForecastCommand(WeatherCommand):
         except WeatherConnectorTimeout:
             return CommandResultStatus.Timeout
         except Exception:
+            logger.error("Exception raised while executing command", exc_info=True)
             return CommandResultStatus.Error
     
     @classmethod
@@ -133,7 +130,7 @@ class PrintWeatherForecastCommand(WeatherCommand):
             return (None, value)
 
     @classmethod
-    def validate_arguments(cls, location: str = None, units: str = "metric", days: str = "5") -> Tuple[List[str], Dict]:
+    def validate_arguments(cls, location: str, units: str, days: str) -> Tuple[List[str], Dict[str, Any]]:
         validations_error_messages = []
         validated_input = {}
 

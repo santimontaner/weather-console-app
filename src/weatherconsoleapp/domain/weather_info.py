@@ -1,13 +1,11 @@
 from typing import NamedTuple
-from datetime import date
-from . import Temperature, Location
+from . import Temperature, Location, Date
 
 class WeatherInfo(NamedTuple):
     """Weather is an immutable domain value representing a weather temperature ad
     description.
     """
-    date: date
+    date: Date
     location: Location
     temperature: Temperature
     weather_description: str
-

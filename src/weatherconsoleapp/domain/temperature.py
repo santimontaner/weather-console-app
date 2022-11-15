@@ -34,4 +34,4 @@ class Temperature(NamedTuple):
         return Temperature(average_value, temperatures[0].units)
 
     def __str__(self):
-        return f"Temperature: {self.value} {Temperature._get_units_string(self.units)}"
+        return f"{self.value:.2f} {Temperature._get_units_string(self.units)}"

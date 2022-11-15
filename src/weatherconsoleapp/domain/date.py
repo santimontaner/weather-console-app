@@ -7,4 +7,4 @@ class Date(NamedTuple):
     date: date
 
     def __str__(self):
-        return self.date.strftime("{%b} {%d}, %Y")
+        return self.date.strftime("%b %d, %Y")
