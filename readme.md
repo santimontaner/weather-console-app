@@ -5,7 +5,7 @@
 To install this CLI applicaton follow these steps:
 1. Install the requirements:
 ```bash
-pip install -r requirements.txt
+> pip install -r requirements.txt
 ```
 2. Run this command from your favourite command line.
 ```bash
@@ -34,8 +34,8 @@ When executing this command:
 The output in the console is:
 ```
 TERUEL (ES)
-Nov 15, 2022
-> Weather: Mostly cloudy.
+Nov 16, 2022
+> Weather: Cloudy.
 > Temperature: 10.80 ºC
 ```
 
@@ -49,13 +49,15 @@ When executing this command:
 The output in the console is:
 ```
 CLERMONT-FERRAND (FR)
-Nov 15, 2022
-> Weather: Mostly cloudy w/ showers.
-> Temperature: 11.50 ºC
 Nov 16, 2022
-> Weather: Intermittent clouds.
-> Temperature: 9.85 ºC
+> Weather: Partly sunny w/ showers.
+> Temperature: 53.50 ºF
 Nov 17, 2022
 > Weather: Showers.
-> Temperature: 8.65 ºC
+> Temperature: 47.00 ºF
+Nov 18, 2022
+> Weather: Mostly cloudy.
+> Temperature: 42.50 ºF
 ```
+* The **Weather** line describes the weather during the day.
+* The **Temperature** line returns the average of the day and night temperatures.
