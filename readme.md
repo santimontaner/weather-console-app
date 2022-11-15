@@ -22,7 +22,7 @@ apikey=XXXXX
 ```
 where `XXXXX` is a valid Accuweather API key. You can obtain an Accuweather API key by registering in the Accuweather developers [website](https://developer.accuweather.com/).
 
-## Using
+## Usage
 
 ### Current weather
 Returns current weather at the specified location (format must be **City,COUNTRYCODE** with the specified units (**metric** or **imperial**, default is **metric**).
