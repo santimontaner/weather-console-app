@@ -18,7 +18,7 @@ jobs:
           pip install -r requirements.txt
           cd src
           python setup.py install
-          python -m unittest tests.test_commands
+          nose2
 
 workflows:
   my-custom-workflow:
