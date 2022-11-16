@@ -5,22 +5,27 @@
 To install this CLI applicaton follow these steps:
 1. Install the requirements:
 ```bash
-> pip install -r requirements.txt
+pip install -r requirements.txt
 ```
-2. Run this command from your favourite command line.
+Alternatively, if you use the `conda` environment manager, you can create an environment using the `conda/environment.yml` file executing this command:
 ```bash
-> python setup.py install
+conda env create -f conda/environment.yml
+```
+
+2. Run this command from the root repository folder:
+```bash
+pip install .
 ```
 
 ## Configuration
 
-When the application is installed, a `.weatherconsoleapp` folder is created in your user folder (the `~/` folder in Linux, the `C:\Users\SantiMontaner` folder in Windows 10). Inside there should be a *config.ini* file
-with this information:
+The first time application is ran, a `.weatherconsoleapp` folder is created in your user folder (the `~/` folder in Linux, the `C:\Users\SantiMontaner` folder in Windows 10). Inside there should be a *config.ini* file
+with this content:
 ```
 [accuweather]
-apikey=XXXXX
+apikey=
 ```
-where `XXXXX` is a valid Accuweather API key. You can obtain an Accuweather API key by registering in the Accuweather developers [website](https://developer.accuweather.com/).
+The apikey value should be set with a valid Accuweather API key. An Accuweather API key can be obtained by registering in the Accuweather developers [website](https://developer.accuweather.com/).
 
 ## Usage
 
@@ -29,7 +34,7 @@ Returns current weather at the specified location (format must be **City,COUNTRY
 
 When executing this command:
 ```
-> weatherconsoleapp current Teruel,ES --units=metric
+weatherconsoleapp current Teruel,ES --units=metric
 ```
 The output in the console is:
 ```
@@ -44,7 +49,7 @@ Returns the weather for next 5 days starting from current date. Accepts optional
 
 When executing this command:
 ```
-> weatherconsoleapp forecast Clermont-Ferrand,FR --units=imperial --days=3
+weatherconsoleapp forecast Clermont-Ferrand,FR --units=imperial --days=3
 ```
 The output in the console is:
 ```

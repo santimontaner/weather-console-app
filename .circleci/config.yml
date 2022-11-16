@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run: |
           pip install -r requirements.txt          
-          python setup.py install
+          pip install .
           nose2
 
 workflows:
