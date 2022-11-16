@@ -29,7 +29,8 @@ class Request(ABC):
         try:
             response = requests.get(self._get_url(), params= self._get_params())
         except requests.exceptions.Timeout:
-            raise WeatherConnectorTimeout("AccuweatheConnector timed out.")
+            logger.error("Server timeout", exc_info=True)
+            raise WeatherConnectorTimeout("AccuweatherApiConnector timed out.")
         logger.info("Response status code: %s %s", response.status_code, response.reason)
         return response
 

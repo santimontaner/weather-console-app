@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Union
 from .domain import WeatherInfo, Location
 
 class Utils:
@@ -25,9 +25,9 @@ class Utils:
         return location.split(",")
 
     @staticmethod
-    def try_parse_string_to_int(int_string: str):
+    def try_parse_string_to_int(int_string: str) -> Union[int, None]:
         try:
-            return (True, int(int_string))
+            return int(int_string)
         except Exception:
-            return (False, None)
+            return None
 

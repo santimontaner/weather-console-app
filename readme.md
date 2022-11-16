@@ -75,6 +75,6 @@ Nov 18, 2022
 
 ## TODOs
 * Pass request factory ar arguments to the AccuWeatherApiConnector in order to increase test coverage.
-* Return more meaningful messages to the user when Accuweather API do not return successful results.
+* Return more meaningful messages to the user when Accuweather API do not return successful results: city or country not found, max number of requests exceeded, etc.
 * Migrate to modern pyproject.toml file.
 * Clean the main.py file.

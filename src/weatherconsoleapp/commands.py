@@ -120,9 +120,9 @@ class PrintWeatherForecastCommand(WeatherCommand):
 
     @classmethod
     def validate_days_argument(cls, days: str):
-        is_integer, value = Utils.try_parse_string_to_int(days)
+        value = Utils.try_parse_string_to_int(days)
 
-        if not is_integer or value < 1 or value > cls.MAX_NUMBER_OF_DAYS:
+        if value is None or value < 1 or value > cls.MAX_NUMBER_OF_DAYS:
             return ("Input 'days' argument must be an integer in the range 1-5.", None)
         return (None, value)
 
