@@ -66,3 +66,9 @@ Nov 18, 2022
 ```
 * The **Weather** line describes the weather during the day.
 * The **Temperature** line returns the average of the day and night temperatures.
+
+## TODOs
+* Pass request factory ar arguments to the AccuWeatherApiConnector in order to increase test coverage.
+* Return more meaningful messages to the user when Accuweather API do not return successful results.
+* Migrate to modern pyproject.toml file.
+* Clean the main.py file.
