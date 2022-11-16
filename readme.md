@@ -12,7 +12,7 @@ Alternatively, if you use the `conda` environment manager, you can create an env
 conda env create -f conda/environment.yml
 ```
 
-2. Run this command from the root repository folder:
+2. Run this command from the root repository folder to install the application:
 ```bash
 pip install .
 ```
@@ -25,7 +25,13 @@ with this content:
 [accuweather]
 apikey=
 ```
-The apikey value should be set with a valid Accuweather API key. An Accuweather API key can be obtained by registering in the Accuweather developers [website](https://developer.accuweather.com/).
+The apikey value should be set with a valid Accuweather API key. To obtain an Accuweather API key follow these steps:
+1. Get registered at the Accuweather developers [website](https://developer.accuweather.com/).
+2. Once you are registered, log in and click on the **Add a new app** button from the **MY APPS** tab:
+![image.png](picture.png)
+3. Once you create the new app, the API key will be revealed if you click on the name of your app. In the example, the app name is **weather-app**.
+
+
 
 ## Usage
 
