@@ -129,3 +129,9 @@ dmypy.json
 .pyre/
 weather-console-app.code-workspace
 .vscode/launch.json
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+.vs/weather-console-app/FileContentIndex/b121e520-872b-4e49-bb62-7dc38106de8b.vsidx
+.vs/weather-console-app/FileContentIndex/read.lock
+.vs/weather-console-app/v17/.suo
