@@ -2,6 +2,8 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/santimontaner/weather-console-app/tree/develop.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/santimontaner/weather-console-app/tree/develop)
 
 ## Install
+This application requires Python 3.9 to work. It alse requires having installed **pip** toolchain in the Python environment.
+
 To install this CLI applicaton follow these steps:
 1. Install the requirements:
 ```bash
@@ -42,7 +44,7 @@ When executing this command:
 ```
 weatherconsoleapp current Teruel,ES --units=metric
 ```
-The output in the console is:
+then the output in the console is:
 ```
 TERUEL (ES)
 Nov 16, 2022
@@ -57,7 +59,7 @@ When executing this command:
 ```
 weatherconsoleapp forecast Clermont-Ferrand,FR --units=imperial --days=3
 ```
-The output in the console is:
+then the output in the console is:
 ```
 CLERMONT-FERRAND (FR)
 Nov 16, 2022
@@ -74,7 +76,8 @@ Nov 18, 2022
 * The **Temperature** line returns the average of the day and night temperatures.
 
 ## TODOs
-* Pass request factory ar arguments to the AccuWeatherApiConnector in order to increase test coverage.
+* Inject a RequestFactory into the AccuWeatherApiConnector in order to allow unit testing of connector (and thus increase test coverage).
+* Split the `accuweather_api_connector.py` in separate files.
 * Return more meaningful messages to the user when Accuweather API do not return successful results: city or country not found, max number of requests exceeded, etc.
-* Migrate to modern pyproject.toml file.
-* Clean the main.py file.
+* Migrate to modern pyproject.toml file and create config folder `.weatherconsoleapp` while installing the app instead of doing it in first execution.
+* Clean the main.py file: create some config class.
