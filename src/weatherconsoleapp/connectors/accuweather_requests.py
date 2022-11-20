@@ -2,8 +2,6 @@ from abc import ABC, abstractmethod
 from typing import Dict, List, NamedTuple
 import logging
 from datetime import datetime
-import requests
-from .weather_api_connector import WeatherConnectorTimeout
 from ..domain import Units, Location, WeatherInfo, Date, Temperature
 from .requests_factories import BaseRequestsFactory
 
@@ -15,24 +13,14 @@ class Request(ABC):
     _requests_factory: BaseRequestsFactory
 
     def make_request(self) -> dict:
-        response = self._get_response_with_log()
-        return response.json()
-
+        return self._requests_factory.get(self._get_url(), params= self._get_params())
+        
     @abstractmethod
     def _get_url(self) -> str:
         pass
 
     def _get_params(self) -> Dict[str, str]:
         return {}
-
-    def _get_response_with_log(self):
-        try:
-            response = self._requests_factory.get(self._get_url(), params= self._get_params())
-        except requests.exceptions.Timeout:
-            logger.error("Server timeout", exc_info=True)
-            raise WeatherConnectorTimeout("AccuweatherApiConnector timed out.")
-        logger.info("Response status code: %s %s", response.status_code, response.reason)
-        return response
 
     @staticmethod
     def _convert_unit_to_key(unit: Units) -> str:

@@ -1,0 +1,190 @@
+{
+  "Headline": {
+    "EffectiveDate": "2022-11-23T01:00:00+01:00",
+    "EffectiveEpochDate": 1669161600,
+    "Severity": 4,
+    "Text": "Expect showery weather late Tuesday night through Wednesday evening",
+    "Category": "rain",
+    "EndDate": "2022-11-24T01:00:00+01:00",
+    "EndEpochDate": 1669248000,
+    "MobileLink": "http://www.accuweather.com/en/es/bilbao/309382/daily-weather-forecast/309382?unit=c&lang=en-us",
+    "Link": "http://www.accuweather.com/en/es/bilbao/309382/daily-weather-forecast/309382?unit=c&lang=en-us"
+  },
+  "DailyForecasts": [
+    {
+      "Date": "2022-11-19T07:00:00+01:00",
+      "EpochDate": 1668837600,
+      "Temperature": {
+        "Minimum": {
+          "Value": 8.3,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 11.7,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "Day": {
+        "Icon": 18,
+        "IconPhrase": "Rain",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Night": {
+        "Icon": 18,
+        "IconPhrase": "Rain",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://www.accuweather.com/en/es/bilbao/309382/daily-weather-forecast/309382?day=1&unit=c&lang=en-us",
+      "Link": "http://www.accuweather.com/en/es/bilbao/309382/daily-weather-forecast/309382?day=1&unit=c&lang=en-us"
+    },
+    {
+      "Date": "2022-11-20T07:00:00+01:00",
+      "EpochDate": 1668924000,
+      "Temperature": {
+        "Minimum": {
+          "Value": 11.7,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 16.7,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "Day": {
+        "Icon": 13,
+        "IconPhrase": "Mostly cloudy w/ showers",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Night": {
+        "Icon": 12,
+        "IconPhrase": "Showers",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://www.accuweather.com/en/es/bilbao/309382/daily-weather-forecast/309382?day=2&unit=c&lang=en-us",
+      "Link": "http://www.accuweather.com/en/es/bilbao/309382/daily-weather-forecast/309382?day=2&unit=c&lang=en-us"
+    },
+    {
+      "Date": "2022-11-21T07:00:00+01:00",
+      "EpochDate": 1669010400,
+      "Temperature": {
+        "Minimum": {
+          "Value": 7.8,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 15,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "Day": {
+        "Icon": 18,
+        "IconPhrase": "Rain",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Night": {
+        "Icon": 40,
+        "IconPhrase": "Mostly cloudy w/ showers",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://www.accuweather.com/en/es/bilbao/309382/daily-weather-forecast/309382?day=3&unit=c&lang=en-us",
+      "Link": "http://www.accuweather.com/en/es/bilbao/309382/daily-weather-forecast/309382?day=3&unit=c&lang=en-us"
+    },
+    {
+      "Date": "2022-11-22T07:00:00+01:00",
+      "EpochDate": 1669096800,
+      "Temperature": {
+        "Minimum": {
+          "Value": 15.6,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 16.3,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "Day": {
+        "Icon": 18,
+        "IconPhrase": "Rain",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Night": {
+        "Icon": 12,
+        "IconPhrase": "Showers",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Moderate"
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://www.accuweather.com/en/es/bilbao/309382/daily-weather-forecast/309382?day=4&unit=c&lang=en-us",
+      "Link": "http://www.accuweather.com/en/es/bilbao/309382/daily-weather-forecast/309382?day=4&unit=c&lang=en-us"
+    },
+    {
+      "Date": "2022-11-23T07:00:00+01:00",
+      "EpochDate": 1669183200,
+      "Temperature": {
+        "Minimum": {
+          "Value": 9.4,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 17.8,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "Day": {
+        "Icon": 14,
+        "IconPhrase": "Partly sunny w/ showers",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Night": {
+        "Icon": 39,
+        "IconPhrase": "Partly cloudy w/ showers",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://www.accuweather.com/en/es/bilbao/309382/daily-weather-forecast/309382?day=5&unit=c&lang=en-us",
+      "Link": "http://www.accuweather.com/en/es/bilbao/309382/daily-weather-forecast/309382?day=5&unit=c&lang=en-us"
+    }
+  ]
+}

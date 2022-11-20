@@ -1,0 +1,25 @@
+[
+  {
+    "LocalObservationDateTime": "2022-11-19T22:58:00+01:00",
+    "EpochTime": 1668895080,
+    "WeatherText": "Light rain",
+    "WeatherIcon": 12,
+    "HasPrecipitation": true,
+    "PrecipitationType": "Rain",
+    "IsDayTime": false,
+    "Temperature": {
+      "Metric": {
+        "Value": 8.3,
+        "Unit": "C",
+        "UnitType": 17
+      },
+      "Imperial": {
+        "Value": 47,
+        "Unit": "F",
+        "UnitType": 18
+      }
+    },
+    "MobileLink": "http://www.accuweather.com/en/es/bilbao/309382/current-weather/309382?lang=en-us",
+    "Link": "http://www.accuweather.com/en/es/bilbao/309382/current-weather/309382?lang=en-us"
+  }
+]
