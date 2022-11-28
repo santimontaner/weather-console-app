@@ -2,7 +2,8 @@ from enum import Enum
 from abc import ABC, abstractmethod
 from typing import Tuple, List, Dict, Union, Optional, Any
 import logging
-from .connectors import WeatherApiConnector, WeatherConnectorTimeout
+from .connectors import WeatherApiConnector
+from .connectors.requests_factories import WeatherConnectorTimeout
 from .domain import Location, Units
 from . import Utils
 

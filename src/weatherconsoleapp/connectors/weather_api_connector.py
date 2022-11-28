@@ -2,10 +2,6 @@ from abc import ABC, abstractmethod
 from typing import List
 from ..domain import Location, WeatherInfo, Units
 
-class WeatherConnectorTimeout(BaseException):
-    """Exception thrown when connector times out.
-    """
-
 class WeatherApiConnector(ABC):
     """Base weather APIs connector. Specific connector implementations should inherit from this class.
     """

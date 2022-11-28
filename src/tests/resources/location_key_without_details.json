@@ -1,0 +1,139 @@
+[
+  {
+    "Version": 1,
+    "Key": "309382",
+    "Type": "City",
+    "Rank": 32,
+    "LocalizedName": "Bilbao",
+    "EnglishName": "Bilbao",
+    "PrimaryPostalCode": "",
+    "Region": {
+      "ID": "EUR",
+      "LocalizedName": "Europe",
+      "EnglishName": "Europe"
+    },
+    "Country": {
+      "ID": "ES",
+      "LocalizedName": "Spain",
+      "EnglishName": "Spain"
+    },
+    "AdministrativeArea": {
+      "ID": "PV",
+      "LocalizedName": "Basque Country",
+      "EnglishName": "Basque Country",
+      "Level": 1,
+      "LocalizedType": "Autonomous Community",
+      "EnglishType": "Autonomous Community",
+      "CountryID": "ES"
+    },
+    "TimeZone": {
+      "Code": "CET",
+      "Name": "Europe/Madrid",
+      "GmtOffset": 1,
+      "IsDaylightSaving": false,
+      "NextOffsetChange": "2023-03-26T01:00:00Z"
+    },
+    "GeoPosition": {
+      "Latitude": 43.258,
+      "Longitude": -2.923,
+      "Elevation": {
+        "Metric": {
+          "Value": 10,
+          "Unit": "m",
+          "UnitType": 5
+        },
+        "Imperial": {
+          "Value": 32,
+          "Unit": "ft",
+          "UnitType": 0
+        }
+      }
+    },
+    "IsAlias": false,
+    "SupplementalAdminAreas": [
+      {
+        "Level": 3,
+        "LocalizedName": "Bilbao",
+        "EnglishName": "Bilbao"
+      }
+    ],
+    "DataSets": [
+      "AirQualityCurrentConditions",
+      "AirQualityForecasts",
+      "Alerts",
+      "DailyPollenForecast",
+      "ForecastConfidence",
+      "FutureRadar",
+      "MinuteCast",
+      "Radar"
+    ]
+  },
+  {
+    "Version": 1,
+    "Key": "2330252",
+    "Type": "City",
+    "Rank": 85,
+    "LocalizedName": "Bilbao",
+    "EnglishName": "Bilbao",
+    "PrimaryPostalCode": "",
+    "Region": {
+      "ID": "EUR",
+      "LocalizedName": "Europe",
+      "EnglishName": "Europe"
+    },
+    "Country": {
+      "ID": "ES",
+      "LocalizedName": "Spain",
+      "EnglishName": "Spain"
+    },
+    "AdministrativeArea": {
+      "ID": "MD",
+      "LocalizedName": "Madrid",
+      "EnglishName": "Madrid",
+      "Level": 1,
+      "LocalizedType": "Autonomous Community",
+      "EnglishType": "Autonomous Community",
+      "CountryID": "ES"
+    },
+    "TimeZone": {
+      "Code": "CET",
+      "Name": "Europe/Madrid",
+      "GmtOffset": 1,
+      "IsDaylightSaving": false,
+      "NextOffsetChange": "2023-03-26T01:00:00Z"
+    },
+    "GeoPosition": {
+      "Latitude": 40.429,
+      "Longitude": -3.702,
+      "Elevation": {
+        "Metric": {
+          "Value": 669,
+          "Unit": "m",
+          "UnitType": 5
+        },
+        "Imperial": {
+          "Value": 2194,
+          "Unit": "ft",
+          "UnitType": 0
+        }
+      }
+    },
+    "IsAlias": false,
+    "ParentCity": {
+      "Key": "308526",
+      "LocalizedName": "Madrid",
+      "EnglishName": "Madrid"
+    },
+    "SupplementalAdminAreas": [],
+    "DataSets": [
+      "AirQualityCurrentConditions",
+      "AirQualityForecasts",
+      "Alerts",
+      "DailyPollenForecast",
+      "ForecastConfidence",
+      "FutureRadar",
+      "MinuteCast",
+      "Radar"
+    ]
+  }
+]

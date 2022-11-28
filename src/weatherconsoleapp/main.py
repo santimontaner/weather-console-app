@@ -6,8 +6,9 @@ import pathlib
 import shutil
 import configparser
 import importlib.resources as resources
-from weatherconsoleapp.connectors import AccuWeatherApiConnector
+from weatherconsoleapp.connectors import AccuWeatherApiConnector, requests_factories
 from weatherconsoleapp.commands import PrintCurrentWeatherCommand, PrintWeatherForecastCommand, CommandResultStatus
+
 import weatherconsoleapp
 
 CONFIG_FILENAME = "config.ini"
@@ -81,7 +82,8 @@ def execute_command(command_builder, apikey, validation_error_messages, validate
             print(message)
         return
 
-    connector = AccuWeatherApiConnector(apikey)
+    requests_factory = requests_factories.RequestsFactory()
+    connector = AccuWeatherApiConnector(apikey, requests_factory)
     command = command_builder(connector, **validated_input)
     result_status = command.execute()
     print_command_result_status(result_status)
